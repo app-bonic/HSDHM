@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7. Kongres Hitne Medicine</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        // Funkcija za postavljanje jezika i spremanje u localStorage
+        function setLanguage(language) {
+            localStorage.setItem('language', language);
+            applyLanguage(language);
+        }
+
+        // Funkcija koja primjenjuje jezik na stranici
+        function applyLanguage(language) {
+            document.documentElement.lang = language;
+            if (language === 'hr') {
+                document.getElementById('title').innerText = '8. KONGRES HITNE MEDICINE MEDICINSKIH SESTARA I MEDICINSKIH TEHNIČARA';
+                document.getElementById('paragraph').innerHTML = 's međunarodnim sudjelovanjem<br>Vodice, Hrvatska, 22.-24. studeni 2023.';
+                document.getElementById('program').innerText = '📖 Program';
+                document.getElementById('ask-question').innerText = '💬 Postavi pitanje predavaču';
+                document.getElementById('zbornik').innerText = '📄 Zbornik sažetaka';
+                document.getElementById('link1').innerText = '🌐 https://kongres.hsdhm.hr/';
+                document.getElementById('link2').innerText = '🏆 Sponzori';
+            } else if (language === 'en') {
+                document.getElementById('title').innerText = '8TH CONGRESS OF EMERGENCY MEDICINE NURSES AND MEDICAL TECHNICIANS';
+                document.getElementById('paragraph').innerHTML = 'with international participation<br>Vodice, Croatia, 22-24 November 2023';
+                document.getElementById('program').innerText = '📖 Program';
+                document.getElementById('ask-question').innerText = '💬 Ask the lecturer a question';
+                document.getElementById('zbornik').innerText = '📄 Book of Abstracts';
+                document.getElementById('link1').innerText = '🌐 https://kongres.hsdhm.hr/';
+                document.getElementById('link2').innerText = '🏆 Sponsors';
+            }
+        }
+
+        // Prilikom učitavanja stranice, provjeri jezik u localStorage-u i primijeni ga
+        window.onload = function() {
+            const savedLanguage = localStorage.getItem('language') || 'hr';
+            applyLanguage(savedLanguage);
+        };
+    </script>
+</head>
+<body>
+    <div class="language-switcher">
+        <button id="croatian-button" onclick="setLanguage('hr')">
+            <img src="croatian-flag.png" alt="Croatian Flag" class="flag-icon"> Hrvatski
+        </button>
+        <button id="english-button" onclick="setLanguage('en')">
+            <img src="english-flag.png" alt="English Flag" class="flag-icon"> English
+        </button>
+    </div>
+    <div class="container">
+        <div class="logo">
+            <img src="logo-hsdhm.jpg" alt="Kongres Logo" />
+        </div>
+        <h1 id="title">8. KONGRES HITNE MEDICINE MEDICINSKIH SESTARA I MEDICINSKIH TEHNIČARA</h1>
+        <p id="paragraph">s međunarodnim sudjelovanjem<br>Vodice, Hrvatska, 22.-24. studeni 2023.</p>
+
+        <div class="buttons">
+            <a href="popis.html" class="button" id="program">📖 Program</a>
+            <a href="postavi_pitanje.html" class="button" id="ask-question">💬 Postavi pitanje predavaču</a>
+            <a href="zbornik_sazetaka.pdf" class="button-zbornik" id="zbornik">📄 Zbornik sažetaka</a>
+        </div>
+
+        <div class="links">
+            <a href="https://kongres.hsdhm.hr/" class="external-link" id="link1">🌐 https://kongres.hsdhm.hr/</a>
+            <a href="sponzori.html" class="external-link" id="link2">🏆 Sponzori</a>
+        </div>
+
+        <div class="footer">
+            <nav>
+                <a href="index.html">🏠 Home</a>
+                <a href="program.html">📅 22.11.2023.</a>
+                <a href="program2.html">📅 23.11.2023.</a>
+                <a href="program3.html">📅 24.11.2023.</a>
+            </nav>
+        </div>
+    </div>
+</body>
+</html>

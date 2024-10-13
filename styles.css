@@ -1,0 +1,138 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    /*font-family: Roboto,sans-serif;*/
+}
+
+body {
+    background-color:  #f9f9f9;
+    color: #333;
+}
+
+.container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.logo img {
+    max-width: 120px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #2a2a2a;
+}
+
+p {
+    margin-bottom: 25px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.buttons {
+    margin-bottom: 20px;
+}
+
+.button {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #396782;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+.button-zbornik {
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    padding: 10px;
+    background-color: #ffffff;
+    color: Black;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.links {
+    margin-bottom: 20px;
+}
+
+.external-link {
+    display: block;
+    margin: 10px 0;
+    color: #333;
+    text-decoration: none;
+}
+
+.external-link:hover {
+    text-decoration: underline;
+}
+
+.footer nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-top: 1px solid #ddd;
+}
+
+.footer nav a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.footer nav a:hover {
+    text-decoration: underline;
+}
+.language-switcher {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.language-switcher button {
+    background-color: #fff; /* Bijela pozadina */
+    border: 1px solid #ccc; /* Lagana siva granica */
+    border-radius: 5px;     /* Lagano zaobljeni kutovi */
+    padding: 10px 15px;
+    margin: 0 5px;          /* Razmak između gumba */
+    cursor: pointer;
+    display: flex;
+    align-items: center;     /* Vertikalno centriraj zastavu i tekst */
+    font-size: 16px;
+}
+
+.language-switcher button:hover {
+    background-color: #f0f0f0; /* Svijetla pozadina na hover */
+}
+
+.flag-icon {
+    width: 24px; /* Širina ikone zastave */
+    height: auto; /* Automatski omjer visine */
+    margin-right: 8px; /* Razmak između zastave i teksta */
+}
+.language-switcher button {
+    margin: 0 2px; /* Smanji razmak između gumba */
+    padding: 5px 10px; /* Smanji unutarnji razmak unutar gumba */
+    margin-top: 0px;
+}
