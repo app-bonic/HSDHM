@@ -26,15 +26,15 @@ body {
 .schedule-container {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 5px;
     padding: 10px;
 }
 .event-card {
     display: flex;
     background-color: white;
     border-radius: 5px;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
-    padding: 15px;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+    padding: 10px;
     align-items: center;
     cursor: pointer;
     border-left: 3px solid #396782;
@@ -129,13 +129,14 @@ body {
     border-left: 2px solid red; /* Crvena boja za PANEL */
 }
 .gray-event {
-    background-color: #f0f0f0; /* Svijetlo siva boja */
+    /*background-color: #f0f0f0; /* Svijetlo siva boja */
+    background-color: #f9f9f9;
     border-bottom: 0px solid orange;
     border-left: 0px solid red;
     padding: 10px; /* Malo unutarnje margine */
     border-radius: 5px; /* Zaobljeni kutovi */
     cursor: default; /* Prikazuje da nije moguće klikanje */
-    margin: 5px 0; /* Smanjenje margina gore i dolje */
+    margin: 0px 0; /* Smanjenje margina gore i dolje */
     text-align: center; /* Centriranje teksta */
     justify-content: center;
 }
