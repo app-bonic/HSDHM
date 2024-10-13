@@ -1,0 +1,90 @@
+/* style-details.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Promijenjeno u flex-start da sadržaj bude na vrhu */
+    min-height: 100vh; /* Minimalna visina za cijeli ekran */
+    padding: 10px; /* Dodan padding oko sadržaja */
+}
+
+.event-details-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    padding: 30px; /* Dosta prostora unutar okvira */
+    max-width: 600px;
+    width: 100%;
+    text-align: left;
+    margin: 10px 0; /* Dodatni prostor oko okvira */
+}
+
+h3 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+p {
+    color: #555;
+    font-size: 18px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    margin: 5px 0; /* Smanji vertikalni razmak između odlomaka */
+    padding: 0;    /* Ukloni padding */
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#modal-location {
+    text-align: right; /* Poravnanje teksta na desno */
+    font-size: 16px;   /* Veličina fonta, možeš prilagoditi */
+    margin-right: 20px; /* Udaljenost od desnog ruba */
+    color: #333;        /* Boja teksta, prilagodi po želji */
+}
+#modal-time {
+    text-align: right; /* Poravnanje teksta na desno */
+    font-size: 16px;   /* Veličina fonta, možeš prilagoditi */
+    margin-right: 20px; /* Udaljenost od desnog ruba */
+    color: #333;        /* Boja teksta, prilagodi po želji */
+}
+
+@media (max-width: 600px) {
+    .event-details-container {
+        padding: 15px; /* Manji padding za mobilne uređaje */
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+
+    button {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
