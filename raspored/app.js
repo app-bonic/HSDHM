@@ -67,8 +67,8 @@ function displaySchedule(data) {
                         </div>
                         <div class="event-content">
                             <h3>${naslovHR}</h3>
-                            <p class="speaker">📅 ${predavac}</p>
-                            <p class="location">Dvorana: ${dvorana}</p>
+                            <p class="speaker"><i class="fa-solid fa-user"></i>  ${predavac}</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> ${dvorana}</p>
                         </div>
                         <div class="event-arrow">
                                     <span>&#x276D;</span>
@@ -98,9 +98,9 @@ function displaySchedule(data) {
                                 </div>
                                 <div class="event-content">
                                     <h3>${naslovHR}</h3>
-                                    <p class="speaker">Moderator: ${moderator || 'Nema moderatora'}</p>
-                                    <p class="speaker">Panelisti: ${panelisti || 'Nema panelista'}</p>
-                                    <p class="location">Dvorana: ${dvorana}</p>
+                                    <p class="speaker"><i class="fa-solid fa-user"></i>   ${moderator || 'Nema moderatora'}</p>
+                                    <p class="speaker"><i class="fa-solid fa-users"></i>   ${panelisti || 'Nema panelista'}</p>
+                                    <p class="location"><i class="fa-solid fa-location-dot"></i> ${dvorana}</p>
                                 </div>
                                 <div class="event-arrow">
                                     <span>&#x276D;</span>
@@ -118,7 +118,7 @@ function displaySchedule(data) {
                     <div class="event-content">
                     <h3>${naslovHR}</h3>
                     <p class="speaker">${voditelj}</p>
-                    <p class="location">Dvorana: ${dvorana}</p>
+                    <p class="location">${dvorana}</p>
                 </div>
                 <div class="event-arrow">
                     <span>&#x276D;</span>
@@ -197,9 +197,9 @@ function showDetails(time, title, speaker, location, summary = '') {
 
 function closeModal() {
     const modal = document.getElementById('details-modal');
-    modal.classList.remove('active');  // Sakrij modal
-    modal.classList.add('hidden');      // Dodaj klasu hidden
+
 }
+
 
 // Dodaj listener za zatvaranje kad klikneš izvan modala
 window.addEventListener('click', function(event) {

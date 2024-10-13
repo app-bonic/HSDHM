@@ -6,6 +6,8 @@ body {
     padding: 0;
 }
 .schedule-header {
+    position: fixed;
+    width: 100vw; /* Postavi širinu na 100% viewporta */
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -156,19 +158,46 @@ body {
     background-color: white; /* Lagana zelena pozadina */
 }
 
-.footer nav {
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100vw; /* Postavi širinu na 100% viewporta */
+    left: 0;
+    background-color: #333;
+    color: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centriraj sadržaj */
+    align-items: center;
     padding: 10px 0;
-    border-top: 1px solid #ddd;
-}
-
-.footer nav a {
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000; /* Footer je iznad ostalih elemenata */
+  }
+  
+  .footer-icons {
+    display: flex;
+    justify-content: center; /* Centriraj ikonice */
+    gap: 40px; /* Razmak između ikonica */
+  }
+  
+  .footer-icon {
+    text-align: center;
     color: white;
     text-decoration: none;
-    font-size: 1rem;
-}
-
-.footer nav a:hover {
-    text-decoration: underline;
-}
+  }
+  
+  .footer-icon img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .footer-icon span {
+    display: block;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  /* Hover efekti */
+  .footer-icon:hover {
+    color: #ffd700; /* Zlatna boja na hover */
+  }
+  
