@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postavi pitanje</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    <script>
+        // Provjera lokalno spremljenog jezika
+        function checkLanguage() {
+            var language = localStorage.getItem('language') || 'hr'; // Ako nema spremljenog jezika, koristi 'hr'
+            applyLanguage(language);
+        }
+    
+        function applyLanguage(language) {
+            document.documentElement.lang = language;
+            if (language === 'hr') {
+                document.getElementById("formTitle").textContent = "Ovdje možete postaviti vaše pitanje.";
+                document.getElementById("formDescription").textContent = "Moderator če pročitati vaše pitanje predavaču.";
+                document.getElementById("labelName").textContent = "Ime:";
+                document.getElementById("labelQuestion").textContent = "Pitanje:";
+                document.getElementById("submitButton").textContent = "Pošalji";
+                document.getElementById("nameError").textContent = "Polje je obavezno.";
+                document.getElementById("questionError").textContent = "Polje je obavezno.";
+                document.getElementById("footer-home").textContent = "Home";
+                document.getElementById("footer-program").textContent = "Program";
+                document.getElementById("footer-ask-question").textContent = "Postavi pitanje";
+            } else if (language === 'en') {
+                document.getElementById("formTitle").textContent = "You can submit your question here.";
+                document.getElementById("formDescription").textContent = "The moderator will read your question to the speaker.";
+                document.getElementById("labelName").textContent = "Name:";
+                document.getElementById("labelQuestion").textContent = "Question:";
+                document.getElementById("submitButton").textContent = "Submit";
+                document.getElementById("nameError").textContent = "Field is required.";
+                document.getElementById("questionError").textContent = "Field is required.";
+                document.getElementById("footer-home").textContent = "Home";
+                document.getElementById("footer-program").textContent = "Program";
+                document.getElementById("footer-ask-question").textContent = "Ask a question";
+            }
+        }
+    
+        // Pokreni funkciju kada se stranica učita
+        document.addEventListener("DOMContentLoaded", checkLanguage);
+    </script>
+
+
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+
+        form {
+    background: white;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 5px auto; /* Centriranje i dodavanje margina od 20px */
+    width: 100%; /* Širina 90% */
+    box-sizing: border-box; /* Uključuje padding u ukupnu širinu */
+}
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"], textarea {
+            width: calc(100% - 0px);
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+            background-color: #fafafa;
+        }
+
+        textarea {
+            height: 100px;
+            resize: vertical;
+            overflow-y: auto;
+        }
+
+        button {
+            background-color: #396782;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            width: calc(100% - 0px);
+            margin-top: 10px;
+          /* box-sizing: border-box;*/
+        }
+
+        button:hover {
+            background-color: #396782;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+    background-color: #fefefe;
+    margin: 20px auto; /* Centriranje i dodavanje margina od 20px */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 100%; /* Širina 90% */
+    max-width: 400px; /* Maksimalna širina */
+    box-sizing: border-box; /* Uključuje padding u ukupnu širinu */
+    border-radius: 8px; /* Zaobljeni kutovi */
+}
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .error {
+    color: red;
+    font-size: 14px;
+    margin-top: -10px; /* Razmak iznad greške */
+    margin-bottom: 15px; /* Nema razmaka ispod greške */
+}
+    </style>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+</head>
+<body>
+
+    
+
+
+
+    <h2 id="formTitle">Ovdje možete postaviti vaše pitanje.</h2>
+    <p id="formDescription">Moderator če pročitati vaše pitanje predavaču.</p>
+    
+    <form id="questionForm">
+        <label for="name" id="labelName">Ime:</label>
+        <input type="text" id="name" name="name" required>
+        <div id="nameError" class="error" style="display: none;">Polje je obavezno.</div>
+    
+        <label for="question" id="labelQuestion">Pitanje:</label>
+        <textarea id="question" name="question" required></textarea>
+        <div id="questionError" class="error" style="display: none;">Polje je obavezno.</div>
+    
+        <button type="button" id="submitButton" onclick="submitQuestion()">Pošalji</button>
+    </form>
+
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <p id="modalMessage" style="text-align: left;"></p> <!-- Lijevo poravnanje -->
+            <button onclick="closeModal()">OK</button>
+        </div>
+    </div>
+
+    <footer class="fixed-footer">
+        <div class="footer-icons">
+            <a href="index.html" class="footer-icon">
+                <img src="ico/home_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="Home">
+                <span id="footer-home">Home</span>
+            </a>
+            <a href="raspored/raspored.html" class="footer-icon">
+                <img src="ico/menu_book_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="Program">
+                <span id="footer-program">Program</span>
+            </a>
+            <a href="pitanja.html" class="footer-icon">
+                <img src="ico/chat_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="Postavi pitanje">
+                <span id="footer-ask-question">Postavi pitanje</span>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // Konfiguracija free Firebase
+        var firebaseConfig = {
+            apiKey: "AIzaSyCIPKzSJ2furGV5BBHqvxE2KS5I8R2of_E",
+            authDomain: "kongres-app.firebaseapp.com",
+            projectId: "kongres-app",
+            storageBucket: "kongres-app.appspot.com",
+            messagingSenderId: "965427055352",
+            appId: "1:965427055352:web:f7ec9b7e49803940f5890d"
+        };
+        
+        // Inicijalizacija Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();  
+
+        // Funkcija za slanje pitanja
+        function submitQuestion() {
+    var name = document.getElementById("name").value;
+    var question = document.getElementById("question").value;
+    var nameError = document.getElementById("nameError");
+    var questionError = document.getElementById("questionError");
+
+    // Resetiranje grešaka
+    nameError.style.display = "none";
+    questionError.style.display = "none";
+
+    // Provjera obaveznog polja
+    if (!name) {
+        nameError.style.display = "block";
+        return;
+    }
+
+    if (!question) {
+        questionError.style.display = "block";
+        return;
+    }
+
+    // Dohvaćanje trenutnog datuma i vremena
+    var currentDate = new Date();
+    var formattedDate = currentDate.toLocaleDateString();
+    var formattedTime = currentDate.toLocaleTimeString();
+
+    // Slanje pitanja u Firestore kolekciju 'questions'
+    db.collection("questions").add({
+        name: name,
+        question: question,
+        status: 'nepročitano',
+        date: formattedDate,
+        time: formattedTime
+    })
+    .then(function() {
+        console.log("Pitanje uspješno poslano!");
+        document.getElementById("questionForm").reset();
+
+        // Prikaz modala
+        var modalMessage = document.getElementById("modalMessage");
+
+        const maxLength = 350;
+const truncatedQuestion = question.length > maxLength ? question.slice(0, maxLength) + '...' : question;
+
+if (document.documentElement.lang === 'en') {
+    modalMessage.innerHTML = `
+        <strong style="text-align: center; display: block;">You have successfully sent a message to the moderator</strong>
+        <div style="text-align: left;">
+            <br>
+            Name: ${name}<br>
+            Question: ${truncatedQuestion}
+        </div>
+    `;
+} else {
+    modalMessage.innerHTML = `
+        <strong style="text-align: center; display: block;">Uspješno ste poslali poruku moderatoru</strong>
+        <div style="text-align: left;">
+            <br>
+            Ime: ${name}<br>
+            Pitanje: ${truncatedQuestion}
+        </div>
+    `;
+}
+
+        document.getElementById("successModal").style.display = "block";
+    })
+    .catch(function(error) {
+        console.error("Greška pri slanju pitanja: ", error);
+    });
+}
+
+
+        // Funkcija za zatvaranje modala
+        function closeModal() {
+            document.getElementById("successModal").style.display = "none";
+        }
+    </script>
+
+
+</body>
+</html>

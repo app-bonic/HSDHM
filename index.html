@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>7. Kongres Hitne Medicine</title>
+    <title>8. Kongres Hitne Medicine</title>
     <link rel="stylesheet" href="styles.css">
     <script>
         // Funkcija za postavljanje jezika i spremanje u localStorage
@@ -12,27 +12,33 @@
             applyLanguage(language);
         }
 
-        // Funkcija koja primjenjuje jezik na stranici
         function applyLanguage(language) {
-            document.documentElement.lang = language;
-            if (language === 'hr') {
-                document.getElementById('title').innerText = '8. KONGRES HITNE MEDICINE MEDICINSKIH SESTARA I MEDICINSKIH TEHNIČARA';
-                document.getElementById('paragraph').innerHTML = 's međunarodnim sudjelovanjem<br>Vodice, Hrvatska, 22.-24. studeni 2023.';
-                document.getElementById('program').innerText = '📖 Program';
-                document.getElementById('ask-question').innerText = '💬 Postavi pitanje predavaču';
-                document.getElementById('zbornik').innerText = '📄 Zbornik sažetaka';
-                document.getElementById('link1').innerText = '🌐 https://kongres.hsdhm.hr/';
-                document.getElementById('link2').innerText = '🏆 Sponzori';
-            } else if (language === 'en') {
-                document.getElementById('title').innerText = '8TH CONGRESS OF EMERGENCY MEDICINE NURSES AND MEDICAL TECHNICIANS';
-                document.getElementById('paragraph').innerHTML = 'with international participation<br>Vodice, Croatia, 22-24 November 2023';
-                document.getElementById('program').innerText = '📖 Program';
-                document.getElementById('ask-question').innerText = '💬 Ask the lecturer a question';
-                document.getElementById('zbornik').innerText = '📄 Book of Abstracts';
-                document.getElementById('link1').innerText = '🌐 https://kongres.hsdhm.hr/';
-                document.getElementById('link2').innerText = '🏆 Sponsors';
-            }
-        }
+    document.documentElement.lang = language;
+    if (language === 'hr') {
+        document.getElementById('title').innerText = '8. KONGRES HITNE MEDICINE MEDICINSKIH SESTARA I MEDICINSKIH TEHNIČARA';
+        document.getElementById('paragraph').innerHTML = 's međunarodnim sudjelovanjem<br>Vodice, Hrvatska, 22.-24. studeni 2023.';
+        document.getElementById('program').innerText = '📖 Program';
+        document.getElementById('ask-question').innerText = '💬 Postavi pitanje predavaču';
+        document.getElementById('zbornik').innerText = '📄 Zbornik sažetaka';
+        document.getElementById('link1').innerText = '🌐 https://kongres.hsdhm.hr/';
+        document.getElementById('link2').innerText = '🏆 Sponzori';
+        document.getElementById('footer-home').innerText = 'Početna';
+        document.getElementById('footer-program').innerText = 'Program';
+        document.getElementById('footer-ask-question').innerText = 'Postavi pitanje';
+    } else if (language === 'en') {
+        document.getElementById('title').innerText = '8TH CONGRESS OF EMERGENCY MEDICINE NURSES AND MEDICAL TECHNICIANS';
+        document.getElementById('paragraph').innerHTML = 'with international participation<br>Vodice, Croatia, 22-24 November 2023';
+        document.getElementById('program').innerText = '📖 Program';
+        document.getElementById('ask-question').innerText = '💬 Ask the lecturer a question';
+        document.getElementById('zbornik').innerText = '📄 Book of Abstracts';
+        document.getElementById('link1').innerText = '🌐 https://kongres.hsdhm.hr/';
+        document.getElementById('link2').innerText = '🏆 Sponsors';
+        document.getElementById('footer-home').innerText = 'Home';
+        document.getElementById('footer-program').innerText = 'Program';
+        document.getElementById('footer-ask-question').innerText = 'Ask a question';
+    }
+}
+
 
         // Prilikom učitavanja stranice, provjeri jezik u localStorage-u i primijeni ga
         window.onload = function() {
@@ -50,6 +56,8 @@
             <img src="ico/english-flag.png" alt="English Flag" class="flag-icon"> English
         </button>
     </div>
+
+
     <div class="container">
         <div class="logo">
             <img src="ico/logo-hsdhm.jpg" alt="Kongres Logo" />
@@ -59,7 +67,7 @@
 
         <div class="buttons">
             <a href="raspored/raspored.html" class="button" id="program">📖 Program</a>
-            <a href="postavi_pitanje.html" class="button" id="ask-question">💬 Postavi pitanje predavaču</a>
+            <a href="pitanja.html" class="button" id="ask-question">💬 Postavi pitanje predavaču</a>
             <a href="zbornik_sazetaka.pdf" class="button-zbornik" id="zbornik">📄 Zbornik sažetaka</a>
         </div>
 
@@ -68,23 +76,26 @@
             <a href="sponzori.html" class="external-link" id="link2">🏆 Sponzori</a>
         </div>
 
+        
         <footer class="fixed-footer">
             <div class="footer-icons">
-              <a href="index.html" class="footer-icon">
-                <img src="ico/home_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="Home">
-                <span>Home</span>
-              </a>
-              <a href="raspored/raspored.html" class="footer-icon">
-                <img src="ico/menu_book_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="Program">
-                <span>Program</span>
-              </a>
-              <a href="#question" class="footer-icon">
-                <img src="ico/chat_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="Postavi pitanje">
-                <span>Postavi pitanje</span>
-              </a>
-             
+                <a href="index.html" class="footer-icon">
+                    <img src="ico/home_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="Home">
+                    <span id="footer-home">Home</span>
+                </a>
+                <a href="raspored/raspored.html" class="footer-icon">
+                    <img src="ico/menu_book_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="Program">
+                    <span id="footer-program">Program</span>
+                </a>
+                <a href="pitanja.html" class="footer-icon">
+                    <img src="ico/chat_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="Postavi pitanje">
+                    <span id="footer-ask-question">Postavi pitanje</span>
+                </a>
             </div>
-          </footer>
+        </footer>
+
+
+
     </div>
     
 </body>

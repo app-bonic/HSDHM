@@ -34,9 +34,10 @@ h1 {
 }
 
 p {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     color: #555;
     line-height: 1.5;
+    text-align: center;
 }
 
 .buttons {
@@ -180,5 +181,53 @@ p {
     color: #ffd700; /* Zlatna boja na hover */
   }
   
+  .back-button-container {
+    position: fixed; /* Držite gumb na vrhu */
+    top: 10px; /* Udaljenost od vrha */
+    left: 10px; /* Udaljenost od lijevog ruba */
+    z-index: 1000; /* Osigurajte da bude iznad drugih elemenata */
+}
+
+.back-button-container {
+    position: fixed; /* Držite gumb na vrhu */
+    top: 10px; /* Udaljenost od vrha */
+    left: 10px; /* Udaljenost od lijevog ruba */
+    z-index: 1000; /* Osigurajte da bude iznad drugih elemenata */
+}
+
+.back-button {
+    background-color: #007BFF; /* Plava boja pozadine */
+    color: white; /* Boja teksta */
+    border: none; /* Bez obruba */
+    padding: 10px 15px; /* Unutarnji razmak */
+    border-radius: 5px; /* Zaobljeni rubovi */
+    font-size: 16px; /* Veličina fonta */
+    display: flex; /* Uporabite flexbox */
+    align-items: center; /* Poravnajte ikonu i tekst */
+    cursor: pointer; /* Pokazivač prsta */
+    transition: background-color 0.3s; /* Animacija pri preletu */
+}
+
+.back-button {
+    margin-right: 5px; /* Razmak između simbola i teksta */
+}
+
+.back-button:hover {
+    background-color: #0056b3; /* Tamnija nijansa pri preletu mišem */
+}
+
+/* Mobilne prilagodbe */
+@media (max-width: 600px) {
+    .back-button-container {
+        top: 5px; /* Manja udaljenost od vrha na manjim ekranima */
+        left: 5px; /* Manja udaljenost od lijevog ruba */
+    }
+
+    .back-button {
+        font-size: 14px; /* Manja veličina fonta za mobilne uređaje */
+        padding: 8px 12px; /* Manji unutarnji razmak za mobilne uređaje */
+    }
+}
+
 
   
