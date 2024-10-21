@@ -4,10 +4,13 @@ body {
     background-color: #f9f9f9;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
 .schedule-header {
     position: fixed;
-    width: 100vw; /* Postavi širinu na 100% viewporta */
+    width: 90vw; /* Postavi širinu na 100% viewporta */
+    top: 20px; /* Pomakni header 20px odozgo */
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -26,11 +29,16 @@ body {
     border-bottom: 2px solid #396782;
 }
 .schedule-container {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+    max-width: 500px;
+    margin: 60px auto 0 auto;
     padding: 10px;
+    text-align: left;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding-bottom: 80px; 
 }
+
 .event-card {
     display: flex;
     background-color: white;
@@ -40,6 +48,8 @@ body {
     align-items: center;
     cursor: pointer;
     border-left: 3px solid #396782;
+    margin-bottom: 5px; 
+    
 }
 .event-card:hover {
     background-color: #f1f1f1;
@@ -54,6 +64,8 @@ body {
     /*flex-grow: 1;*/
     padding-left: 10px;
     padding-bottom: 0px;
+    width: 100%;  /* Kartica će se razvlačiti do punog ruba */
+    box-sizing: border-box;  /* Ovo osigurava da padding ne pređe preko 100% širine */
 }
 .event-content p {
     font-size: 14px;
@@ -201,3 +213,30 @@ body {
     color: #ffd700; /* Zlatna boja na hover */
   }
   
+.event-info {
+    display: flex;
+    justify-content: space-between; /* Razdvaja predavača i dvoranu */
+    align-items: center; /* Poravnava ih vertikalno u sredini */
+}
+
+.speaker {
+    margin-right: 20px; /* Dodaj razmak između predavača i dvorane ako želiš */
+}
+
+.location {
+    text-align: left; /* Poravnaj dvoranu desno */
+}
+
+.radno-predsjednistvo {
+    display: flex;
+    align-items: center; /* Poravnaj tekst i predavača vertikalno */
+    gap: 10px; /* Dodaj razmak između h4 i p elementa */
+}
+
+.radno-predsjednistvo h4 {
+    margin: 0; /* Ukloni default margin h4 elementa */
+}
+
+.radno-predsjednistvo .speaker {
+    margin: 0; /* Ukloni default margin p elementa */
+}

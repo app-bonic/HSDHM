@@ -65,14 +65,17 @@ function displaySchedule(data) {
                         <div class="event-time">
                             <p>${vrijeme}</p>
                         </div>
-                        <div class="event-content">
-                            <h3>${naslovHR}</h3>
-                            <p class="speaker"><i class="fa-solid fa-user"></i>  ${predavac}</p>
-                            <p class="location"><i class="fa-solid fa-location-dot"></i> ${dvorana}</p>
-                        </div>
-                        <div class="event-arrow">
-                                    <span>&#x276D;</span>
-                                </div>
+                 <div class="event-content">
+                     <h3>${naslovHR}</h3>
+                     <div class="event-info">
+                    <p class="speaker"><i class="fa-solid fa-user"></i> ${predavac}</p>
+                         <p class="location"><i class="fa-solid fa-location-dot"></i> ${dvorana}</p>
+                      </div>
+                    </div>
+                            <div class="event-arrow">
+                                     <span>&#x276D;</span>
+                            </div>
+
                     `;
                     eventCard.onclick = () => {
                         // Konstruiraj URL s podacima
@@ -84,8 +87,10 @@ function displaySchedule(data) {
                     case "RADNO":
                         eventCard.classList.add('gray-event'); // Dodajemo klasu za sivi okvir
                         eventCard.innerHTML = `
-                            <h4>Radno predsjedništvo:  </h4> <!-- Dodaj naziv -->
-                            <p class="speaker">${radnoPredsjednistvo}</p>
+                            <div class="radno-predsjednistvo">
+    <h4>Radno predsjedništvo:</h4>
+    <p class="speaker">${radnoPredsjednistvo}</p>
+</div>
                         `;
                         // Ukloniti onclick kako ne bi bilo klikanja
                         break;
@@ -153,7 +158,7 @@ function displaySchedule(data) {
                         </div>
                         <div class="event-content">
                             <h3>${naslovHR}</h3>
-                            <p class="location">${dvorana}</p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> ${dvorana}</p>
                         </div>
                     `;
                     break;
