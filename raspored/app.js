@@ -1,12 +1,18 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Automatski učitaj 1.xlsx
-    fetch('1.xlsx')
+    const danKongresa = 1; // Postavi na 1, 2 ili 3 prema željenom danu
+
+    // Izaberi datoteku na osnovu `danKongresa` varijable
+    const fileName = `${danKongresa}.xlsx`;
+
+    // Učitaj datoteku prema danu
+    fetch(fileName)
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
             return response.arrayBuffer();
         })
+
         .then(data => {
             const workbook = XLSX.read(data, { type: 'array' });
             const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
@@ -17,6 +23,15 @@ document.addEventListener('DOMContentLoaded', function() {
         .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
         });
+    // Ažuriraj aktivni gumb prema danu kongresa
+    const buttons = document.querySelectorAll('.schedule-header button');
+    buttons.forEach((button, index) => {
+        if (index + 1 === danKongresa) {
+            button.classList.add('active');
+        } else {
+            button.classList.remove('active');
+        }
+    });
 
     // Ovdje ostaje tvoj kod za učitavanje iz input-a
     document.getElementById('fileInput').addEventListener('change', function(event) {
