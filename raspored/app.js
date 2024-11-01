@@ -1,37 +1,58 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const danKongresa = 1; // Postavi na 1, 2 ili 3 prema željenom danu
+    let danKongresa = 1; // Početna vrijednost dana
 
-    // Izaberi datoteku na osnovu `danKongresa` varijable
-    const fileName = `${danKongresa}.xlsx`;
+    // Funkcija za učitavanje datoteke na osnovu dana
+    function loadSchedule(dan) {
+        const fileName = `${dan}.xlsx`;
+        
+        fetch(fileName)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.arrayBuffer();
+            })
+            .then(data => {
+                const workbook = XLSX.read(data, { type: 'array' });
+                const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+                const jsonData = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
 
-    // Učitaj datoteku prema danu
-    fetch(fileName)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+                displaySchedule(jsonData); // Prikaz rasporeda
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+
+        // Ažuriraj aktivni gumb
+        updateActiveButton(dan);
+    }
+
+    // Funkcija za postavljanje aktivnog gumba
+    function updateActiveButton(dan) {
+        const buttons = document.querySelectorAll('.schedule-header button');
+        buttons.forEach((button, index) => {
+            if (index + 1 === dan) {
+                button.classList.add('active');
+            } else {
+                button.classList.remove('active');
             }
-            return response.arrayBuffer();
-        })
-
-        .then(data => {
-            const workbook = XLSX.read(data, { type: 'array' });
-            const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
-            const jsonData = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
-
-            displaySchedule(jsonData); // Pozivamo funkciju za prikaz rasporeda
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
         });
-    // Ažuriraj aktivni gumb prema danu kongresa
+    }
+
+    // Dodaj event listenere na svaki gumb
     const buttons = document.querySelectorAll('.schedule-header button');
     buttons.forEach((button, index) => {
-        if (index + 1 === danKongresa) {
-            button.classList.add('active');
-        } else {
-            button.classList.remove('active');
-        }
+        button.addEventListener('click', () => {
+            danKongresa = index + 1; // Postavi dan prema indeksu gumba
+            loadSchedule(danKongresa); // Učitaj raspored za taj dan
+        });
     });
+
+    // Učitaj početni raspored za danKongresa
+    loadSchedule(danKongresa);
+});
+
+
 
     // Ovdje ostaje tvoj kod za učitavanje iz input-a
     document.getElementById('fileInput').addEventListener('change', function(event) {
@@ -50,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
             reader.readAsArrayBuffer(file);
         }
     });
-});
+
 
 function displaySchedule(data) {
     const container = document.getElementById('scheduleContainer');
