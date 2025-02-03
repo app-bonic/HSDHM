@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: #f4f4f9;
+    background-color: #f9f9f9;
     display: flex;
     justify-content: center;
     align-items: flex-start; /* Promijenjeno u flex-start da sadržaj bude na vrhu */
@@ -42,21 +42,6 @@ p {
     padding: 0;    /* Ukloni padding */
 }
 
-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
 #modal-location {
     text-align: right; /* Poravnanje teksta na desno */
     font-size: 16px;   /* Veličina fonta, možeš prilagoditi */
@@ -68,6 +53,24 @@ button:hover {
     font-size: 16px;   /* Veličina fonta, možeš prilagoditi */
     margin-right: 20px; /* Udaljenost od desnog ruba */
     color: #333;        /* Boja teksta, prilagodi po želji */
+}
+#modal-speaker {
+    white-space: pre-line; /* Prikazuje novi red kao linijski prekid */
+}
+
+button {
+    background-color: #396782; /* Ista boja kao u .button klasi iz styles.css */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2a4d63; /* Tamnija nijansa za hover */
 }
 
 @media (max-width: 600px) {

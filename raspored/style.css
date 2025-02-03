@@ -9,14 +9,19 @@ body {
 
 .schedule-header {
     position: fixed;
-    width: 90vw; /* Postavi širinu na 100% viewporta */
-    top: 20px; /* Pomakni header 20px odozgo */
+    width: 100%; /* Proširi na cijelu širinu */
+    top: 0; /* Postavi skroz do vrha */
+    left: 0; /* Poravnaj lijevi rub */
     display: flex;
     justify-content: center;
     gap: 10px;
-    background-color: #e0e0e0;
+    background-color: #f9f9f9;
     padding: 10px 0;
+    margin: 0; /* Ukloni eventualne margine */
+    
+    z-index: 1000; /* Osiguraj da bude iznad ostalog sadržaja */
 }
+
 .schedule-header button {
     background-color: transparent;
     border: none;

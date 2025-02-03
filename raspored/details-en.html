@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Details</title>
+    <link rel="stylesheet" href="style-details.css">
+</head>
+<body>
+    <div class="event-details-container">
+        <h3 id="modal-title"></h3>
+        <p id="modal-speaker"></p>
+        <p id="modal-time"></p>
+        <p id="modal-location"></p>
+        <p id="modal-description"></p>
+        <button onclick="goBack()">Back</button> <!-- Dugme za povratak -->
+    </div>
+
+    <script>
+        function goBack() {
+            window.history.back(); // Vraća se na prethodnu stranicu
+        }
+
+        // Učitavanje podataka iz URL-a
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById('modal-title').innerText = params.get('title');
+        document.getElementById('modal-speaker').innerText = params.get('speaker');
+        document.getElementById('modal-time').innerText = params.get('time');
+        document.getElementById('modal-location').innerText = `Hall: ${params.get('location')}`;
+        document.getElementById('modal-description').innerText = params.get('description');
+    </script>
+</body>
+</html>

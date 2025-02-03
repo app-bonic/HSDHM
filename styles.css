@@ -229,5 +229,64 @@ p {
     }
 }
 
+/* Stilovi za sponzore */
+.sponsors-container {
+    max-width: 500px; /* Ista širina kao na raspored.html */
+    margin: 60px auto 0 auto; /* Centriranje i razmak od vrha */
+    padding: 10px;
+    text-align: center;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding-bottom: 80px; /* Dodatni prostor za footer */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centrira kartice horizontalno */
+    gap: 20px; /* Razmak između kartica */
+}
 
-  
+.sponsor-card {
+    background-color: white;
+    border-radius: 20px; /* Ovalni okvir */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: calc(50% - 20px); /* Dva u redu s razmakom od 20px */
+    box-sizing: border-box; /* Uključuje padding i border u širinu */
+}
+
+.sponsor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.sponsor-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.sponsor-card h3 {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+}
+
+/* Stilovi za velike sponzore (od ruba do ruba) */
+.sponsor-card.large {
+    width: 100%; /* Od ruba do ruba */
+}
+
+/* Stilovi za male sponzore (po dva u redu) */
+.sponsor-card.small {
+    width: calc(50% - 20px); /* Dva u redu s razmakom od 20px */
+}
+
+/* Responsive stilovi za male ekrane */
+@media (max-width: 600px) {
+    .sponsor-card.small {
+        width: 50%; /* Jedan sponzor po redu na malim ekranima */
+    }
+}

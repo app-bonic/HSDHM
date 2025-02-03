@@ -1,37 +1,51 @@
 <!DOCTYPE html>
-<html lang="hr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Konferencijski Raspored</title>
-
-    <link rel="stylesheet" href="style.css"> <!-- Povezivanje CSS datoteke -->
+    <title>Conference Schedule</title>
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <div class="schedule-header">
-        <button class="active">Petak</button>
-        <button class="active">Subota</button>
-        <button class="active">Nedjelja</button>
+  <div class="schedule-header">
+    <button>Mar 13, 2025</button>
+    <button>Mar 14, 2025</button>
+    <button>Mar 15, 2025</button>
+</div>
+  <div class="schedule-container" id="scheduleContainer">
+    <!-- Dinamički generirani događaji -->
+  </div>
+
+  <div id="details-modal" class="modal hidden">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal()">&times;</span>
+      <h3 id="modal-title"></h3>
+      <p id="modal-speaker"></p>
+      <p id="modal-time"></p>
+      <p id="modal-location"></p>
+      <p id="modal-description"></p>
     </div>
+  </div>
 
-    <input type="file" id="fileInput" accept=".xlsx, .xls" />
+  <script src="app-en.js"></script> <!-- Poveži novi JS za englesku verziju -->
 
-    <div class="schedule-container" id="scheduleContainer">
-        <!-- Dinamički generirani događaji iz Excela -->
+  <footer class="fixed-footer">
+    <div class="footer-icons">
+      <a href="../index.html" class="footer-icon">
+        <img src="../ico/home_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="Home">
+        <span>Home</span>
+      </a>
+      <a href="../raspored/raspored-en.html" class="footer-icon">
+        <img src="../ico/menu_book_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="Program">
+        <span>Program</span>
+      </a>
+      <a href="../pitanja.html" class="footer-icon">
+        <img src="../ico/chat_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="Ask a Question">
+        <span>Ask a Question</span>
+      </a>
     </div>
-
-    <div id="details-modal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3 id="modal-title"></h3>
-            <p id="modal-speaker"></p>
-            <p id="modal-time"></p>
-            <p id="modal-location"></p>
-            <p id="modal-description"></p>
-        </div>
-    </div>
-
-    <script src="app.js"></script> <!-- Povezivanje JavaScript datoteke -->
+  </footer>
 </body>
 </html>

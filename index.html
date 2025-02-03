@@ -13,10 +13,13 @@
         }
 
         function applyLanguage(language) {
-    document.documentElement.lang = language;
+        document.documentElement.lang = language;
+        const programLink = document.getElementById('program');
+        const footerProgramLink = document.getElementById('footer-program').parentElement;
+        
     if (language === 'hr') {
         document.getElementById('title').innerText = '8. KONGRES HITNE MEDICINE MEDICINSKIH SESTARA I MEDICINSKIH TEHNIČARA';
-        document.getElementById('paragraph').innerHTML = 's međunarodnim sudjelovanjem<br>Vodice, Hrvatska, 22.-24. studeni 2023.';
+        document.getElementById('paragraph').innerHTML = 's međunarodnim sudjelovanjem<br>Vodice, Hrvatska, 13.-15. ožujak 2025.';
         document.getElementById('program').innerText = '📖 Program';
         document.getElementById('ask-question').innerText = '💬 Postavi pitanje predavaču';
         document.getElementById('zbornik').innerText = '📄 Zbornik sažetaka';
@@ -25,9 +28,11 @@
         document.getElementById('footer-home').innerText = 'Početna';
         document.getElementById('footer-program').innerText = 'Program';
         document.getElementById('footer-ask-question').innerText = 'Postavi pitanje';
+        programLink.href = "raspored/raspored.html";
+        footerProgramLink.href = "raspored/raspored.html";
     } else if (language === 'en') {
-        document.getElementById('title').innerText = '8TH CONGRESS OF EMERGENCY MEDICINE NURSES AND MEDICAL TECHNICIANS';
-        document.getElementById('paragraph').innerHTML = 'with international participation<br>Vodice, Croatia, 22-24 November 2023';
+        document.getElementById('title').innerText = '8th EMERGENCY MEDICINE CONGRESS';
+        document.getElementById('paragraph').innerHTML = 'with International Participation<br>Vodice, Croatia, 13. - 15. March 2025.';
         document.getElementById('program').innerText = '📖 Program';
         document.getElementById('ask-question').innerText = '💬 Ask the lecturer a question';
         document.getElementById('zbornik').innerText = '📄 Book of Abstracts';
@@ -35,7 +40,9 @@
         document.getElementById('link2').innerText = '🏆 Sponsors';
         document.getElementById('footer-home').innerText = 'Home';
         document.getElementById('footer-program').innerText = 'Program';
-        document.getElementById('footer-ask-question').innerText = 'Ask a question';
+        document.getElementById('footer-ask-question').innerText = 'Ask a Question';
+        programLink.href = "raspored/raspored-en.html";
+        footerProgramLink.href = "raspored/raspored-en.html";
     }
 }
 
@@ -73,7 +80,7 @@
 
         <div class="links">
             <a href="https://kongres.hsdhm.hr/" class="external-link" id="link1">🌐 https://kongres.hsdhm.hr/</a>
-            <a href="sponzori.html" class="external-link" id="link2">🏆 Sponzori</a>
+            <a href="/sponzori/sponzori.html" class="external-link" id="link2">🏆 Sponzori</a>
         </div>
 
         
@@ -83,7 +90,7 @@
                     <img src="ico/home_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="Home">
                     <span id="footer-home">Home</span>
                 </a>
-                <a href="raspored/raspored.html" class="footer-icon">
+                <a href="raspored/raspored-en.html" class="footer-icon">
                     <img src="ico/menu_book_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png" alt="Program">
                     <span id="footer-program">Program</span>
                 </a>

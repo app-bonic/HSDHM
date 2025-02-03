@@ -15,6 +15,8 @@
     
         function applyLanguage(language) {
             document.documentElement.lang = language;
+            const programLink = document.getElementById("footer-program").parentElement;
+
             if (language === 'hr') {
                 document.getElementById("formTitle").textContent = "Ovdje možete postaviti vaše pitanje.";
                 document.getElementById("formDescription").textContent = "Moderator če pročitati vaše pitanje predavaču.";
@@ -23,9 +25,10 @@
                 document.getElementById("submitButton").textContent = "Pošalji";
                 document.getElementById("nameError").textContent = "Polje je obavezno.";
                 document.getElementById("questionError").textContent = "Polje je obavezno.";
-                document.getElementById("footer-home").textContent = "Home";
+                document.getElementById("footer-home").textContent = "Početna";
                 document.getElementById("footer-program").textContent = "Program";
                 document.getElementById("footer-ask-question").textContent = "Postavi pitanje";
+                programLink.href = "raspored/raspored.html";
             } else if (language === 'en') {
                 document.getElementById("formTitle").textContent = "You can submit your question here.";
                 document.getElementById("formDescription").textContent = "The moderator will read your question to the speaker.";
@@ -36,7 +39,8 @@
                 document.getElementById("questionError").textContent = "Field is required.";
                 document.getElementById("footer-home").textContent = "Home";
                 document.getElementById("footer-program").textContent = "Program";
-                document.getElementById("footer-ask-question").textContent = "Ask a question";
+                document.getElementById("footer-ask-question").textContent = "Ask a Question";
+                programLink.href = "raspored/raspored-en.html";
             }
         }
     
@@ -249,7 +253,7 @@
     // Slanje pitanja u Firestore kolekciju 'questions'
     db.collection("questions").add({
         name: name,
-        question: question,
+        question: question.replace(/\r?\n/g, '\n'), // Eksplicitno čuvaj nove redove
         status: 'nepročitano',
         date: formattedDate,
         time: formattedTime

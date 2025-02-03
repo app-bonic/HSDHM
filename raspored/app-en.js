@@ -81,7 +81,7 @@ function displaySchedule(data) {
         if (index > 0 && row.length > 0) {  // Provjeravaj ima li redak podataka
             const vrsta = row[0] ? row[0].trim() .replace(/;/g, '<br>') : ''; // Zamjena ";" sa novim redom
             const vrijeme = row[1] ? row[1].trim() .replace(/;/g, '<br>') : ''; // Zamjena ";" sa novim redom
-            const naslovHR = row[2] ? row[2].trim() .replace(/;/g, '<br>') : ''; // Zamjena ";" sa novim redom
+            const naslovHR = row[3] ? row[3].trim() .replace(/;/g, '<br>') : ''; // Zamjena ";" sa novim redom
             const predavac = row[4] ? row[4].trim() .replace(/;/g, '<br>') : ''; // Zamjena ";" sa novim redom
             const dvorana = row[9] ? row[9].trim() .replace(/;/g, '<br>') : ''; // Zamjena ";" sa novim redom
             const moderator = row[7] ? row[7].trim() .replace(/;/g, '<br>') : ''; // Zamjena ";" sa novim redom // Indeks za moderatora (H)
@@ -115,23 +115,23 @@ function displaySchedule(data) {
                     `;
                     eventCard.onclick = () => {
                         // Konstruiraj URL s podacima
-                        const url = `details.html?title=${encodeURIComponent(naslovHR)}&speaker=${encodeURIComponent(predavac)}&time=${encodeURIComponent(vrijeme)}&location=${encodeURIComponent(dvorana)}&description=${encodeURIComponent(sažetak)}`;
+                        const url = `details-en.html?title=${encodeURIComponent(naslovHR)}&speaker=${encodeURIComponent(predavac)}&time=${encodeURIComponent(vrijeme)}&location=${encodeURIComponent(dvorana)}&description=${encodeURIComponent(sažetak)}`;
                         window.location.href = url; // Preusmjeravanje na novu stranicu
                     };
                     break;
 
-                    case "RADNO":
+                case "RADNO":
                         eventCard.classList.add('gray-event'); // Dodajemo klasu za sivi okvir
                         eventCard.innerHTML = `
                             <div class="radno-predsjednistvo">
-                            <h4>Radno predsjedništvo:</h4>
+                            <h4>Presiding Committee:</h4>
                             <p class="speaker">${radnoPredsjednistvo}</p>
                         </div>
                         `;
                         // Ukloniti onclick kako ne bi bilo klikanja
                         break;
 
-                        case "OKRUGLI":
+                case "OKRUGLI":
                         eventCard.classList.add('orange-event');
                         eventCard.innerHTML = `
                             <div class="event-time">
@@ -148,32 +148,32 @@ function displaySchedule(data) {
                             </div>
                         `;
                         eventCard.onclick = () => {
-                            const url = `details.html?title=${encodeURIComponent(naslovHR)}&speaker=${encodeURIComponent("Moderator: " + moderator + "\nPanelisti: " + panelisti)}&time=${encodeURIComponent(vrijeme)}&location=${encodeURIComponent(dvorana)}&description=${encodeURIComponent(sažetak)}`;
+                            const url = `details-en.html?title=${encodeURIComponent(naslovHR)}&speaker=${encodeURIComponent("Moderator: " + moderator + "\nPanelists: " + panelisti)}&time=${encodeURIComponent(vrijeme)}&location=${encodeURIComponent(dvorana)}&description=${encodeURIComponent(sažetak)}`;
                             window.location.href = url;
                         };
                         break;
 
-                    case "RADIONICA":  // Dodano za RADIONICA
-                    eventCard.classList.add('workshop-event'); // Dodaj klasu za stilizaciju
-                    eventCard.innerHTML = `
-                        <div class="event-time">
-                    <p>${vrijeme}</p>
-                        </div>
-                    <div class="event-content">
-                    <h3>${naslovHR}</h3>
-                    <p class="speaker"><i class="fa-solid fa-user"></i> ${voditelj}</p>
-                         <p class="location"><i class="fa-solid fa-location-dot"></i> ${dvorana}</p>
-                      </div>
-                </div>
-                <div class="event-arrow">
-                    <span>&#x276D;</span>
-                 </div>
-                        `;
-                        eventCard.onclick = () => {
-                            const url = `details.html?title=${encodeURIComponent(naslovHR)}&speaker=${encodeURIComponent("Voditelj radionice: " + voditelj)}&time=${encodeURIComponent(vrijeme)}&location=${encodeURIComponent(dvorana)}&description=${encodeURIComponent(sažetak)}`;
-                            window.location.href = url;
-                        };
-                    break;
+                case "RADIONICA":  // Dodano za RADIONICA
+                        eventCard.classList.add('workshop-event'); // Dodaj klasu za stilizaciju
+                        eventCard.innerHTML = `
+                            <div class="event-time">
+                        <p>${vrijeme}</p>
+                            </div>
+                        <div class="event-content">
+                        <h3>${naslovHR}</h3>
+                        <p class="speaker"><i class="fa-solid fa-user"></i> ${voditelj}</p>
+                             <p class="location"><i class="fa-solid fa-location-dot"></i> ${dvorana}</p>
+                          </div>
+                    </div>
+                    <div class="event-arrow">
+                        <span>&#x276D;</span>
+                     </div>
+                            `;
+                            eventCard.onclick = () => {
+                                const url = `details-en.html?title=${encodeURIComponent(naslovHR)}&speaker=${encodeURIComponent("Workshop manager: " + voditelj)}&time=${encodeURIComponent(vrijeme)}&location=${encodeURIComponent(dvorana)}&description=${encodeURIComponent(sažetak)}`;
+                                window.location.href = url;
+                            };
+                        break;
 
                 case "PANEL":
                     eventCard.classList.add('red-event'); // dodaj klasu za crvenu boju
