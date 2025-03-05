@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let danKongresa = 1; // Početna vrijednost dana
+    let danKongresa = 3; // Početna vrijednost dana
 
     // Funkcija za učitavanje datoteke na osnovu dana
     function loadSchedule(dan) {
