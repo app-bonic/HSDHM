@@ -82,7 +82,7 @@ function displaySchedule(data) {
             const vrsta = row[0] ? row[0].trim() .replace(/;/g, '<br>') : ''; // Zamjena ";" sa novim redom
             const vrijeme = row[1] ? row[1].trim() .replace(/;/g, '<br>') : ''; // Zamjena ";" sa novim redom
             const naslovHR = row[2] ? row[2].trim() .replace(/;/g, '<br>') : ''; // Zamjena ";" sa novim redom
-            const predavac = row[4] ? row[4].trim() .replace(/;/g, '<br>') : ''; // Zamjena ";" sa novim redom
+            const predavac = row[4] ? row[4].trim() : '';
             const dvorana = row[9] ? row[9].trim() .replace(/;/g, '<br>') : ''; // Zamjena ";" sa novim redom
             const moderator = row[7] ? row[7].trim() .replace(/;/g, '<br>') : ''; // Zamjena ";" sa novim redom // Indeks za moderatora (H)
             const panelisti = row[8] ? row[8].trim() .replace(/;/g, '<br>') : ''; // Zamjena ";" sa novim redom // Indeks za paneliste (I)
@@ -95,41 +95,48 @@ function displaySchedule(data) {
             let eventCard = document.createElement('div');
             eventCard.classList.add('event-card');
 
+            // Kreiraj ikonu unutar svakog događaja
+            let iconElement = '';
+            if (predavac.includes(',')) {
+                iconElement = '<i class="fa-solid fa-users"></i>';
+            } else {
+                iconElement = '<i class="fa-solid fa-user"></i>';
+            }
+
             switch (vrsta) {
                 case "PREDAVANJE":
                     eventCard.innerHTML = `
-                        <div class="event-time">
-                            <p>${vrijeme}</p>
-                        </div>
-                 <div class="event-content">
-                     <h3>${naslovHR}</h3>
-                     <div class="event-info">
-                    <p class="speaker"><i class="fa-solid fa-user"></i> ${predavac}</p>
-                         <p class="location"><i class="fa-solid fa-location-dot"></i> ${dvorana}</p>
-                      </div>
+                    <div class="event-time">
+                        <p>${vrijeme}</p>
                     </div>
-                            <div class="event-arrow">
-                                     <span>&#x276D;</span>
-                            </div>
-
-                    `;
+                    <div class="event-content">
+                        <h3>${naslovHR}</h3>
+                        <div class="event-info">
+                            <p class="speaker">${iconElement} <span class="speaker-names">${predavac}</span></p>
+                            <p class="location"><i class="fa-solid fa-location-dot"></i> ${dvorana}</p>
+                        </div>
+                    </div>
+                    <div class="event-arrow">
+                        <span>&#x276D;</span>
+                    </div>
+                `;
+                            
                     eventCard.onclick = () => {
-                        // Konstruiraj URL s podacima
                         const url = `details.html?title=${encodeURIComponent(naslovHR)}&speaker=${encodeURIComponent(predavac)}&time=${encodeURIComponent(vrijeme)}&location=${encodeURIComponent(dvorana)}&description=${encodeURIComponent(sažetak)}`;
                         window.location.href = url; // Preusmjeravanje na novu stranicu
                     };
                     break;
 
                     case "RADNO":
-                        eventCard.classList.add('gray-event'); // Dodajemo klasu za sivi okvir
-                        eventCard.innerHTML = `
-                            <div class="radno-predsjednistvo">
-                            <h4>Radno predsjedništvo:</h4>
-                            <p class="speaker">${radnoPredsjednistvo}</p>
-                        </div>
-                        `;
-                        // Ukloniti onclick kako ne bi bilo klikanja
-                        break;
+                        case "RADNO":
+                            eventCard.classList.add('gray-event'); // Dodajemo klasu za sivi okvir
+                            eventCard.innerHTML = `
+                                <div class="radno-predsjednistvo">
+                                    <h4>Radno predsjedništvo:</h4>
+                                    <p class="speaker">${radnoPredsjednistvo.replace(/\n/g, '<br>')}</p>
+                                </div>
+                            `;
+                            break;
 
                         case "OKRUGLI":
                         eventCard.classList.add('orange-event');
@@ -139,8 +146,8 @@ function displaySchedule(data) {
                             </div>
                             <div class="event-content">
                                 <h3>${naslovHR}</h3>
-                                <p class="speaker"><i class="fa-solid fa-user"></i>   ${moderator || 'Nema moderatora'}</p>
-                                <p class="speaker"><i class="fa-solid fa-users"></i>   ${panelisti || 'Nema panelista'}</p>
+                                <p class="speaker"><i class="fa-solid fa-user"></i>${moderator}</p>
+                                <p class="speaker"><i class="fa-solid fa-users"></i>${panelisti}</p>
                                 <p class="location"><i class="fa-solid fa-location-dot"></i> ${dvorana}</p>
                             </div>
                             <div class="event-arrow">

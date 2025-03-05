@@ -47,12 +47,14 @@ body {
 .event-card {
     display: flex;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 10px;
     box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
     padding: 10px;
     align-items: center;
     cursor: pointer;
-    border-left: 3px solid #396782;
+    border-bottom: 2px solid #396782;
+    border-left: 2px solid #396782;
+    
     margin-bottom: 5px; 
     
 }
@@ -142,7 +144,8 @@ body {
     cursor: pointer;
 }
 .orange-event {
-    border-left: 3px solid orange; /* Narančasta boja za OKRUGLI */
+    border-left: 2px solid orange; /* Narančasta boja za OKRUGLI */
+    border-bottom: 2px solid orange;
 }
 .red-event {
     border-left: 2px solid red; /* Crvena boja za PANEL */
@@ -167,11 +170,12 @@ body {
     font-size: 14px; /* Smanjena veličina fonta (prilagodite prema potrebama) */
 }
 .workshop-event {
-    border-left: 3px solid green; /* Dodaj zelenu liniju za radionicu */
+    border-left: 2px solid green;
+    border-bottom: 2px solid green;  /* Dodaj zelenu liniju za radionicu */
     background-color: white; /* Lagana zelena pozadina */
 }
 .kava-event {
-    border-left: 0px solid green; /* Dodaj zelenu liniju za radionicu */
+    
     background-color: white; /* Lagana zelena pozadina */
 }
 
@@ -218,18 +222,14 @@ body {
     color: #ffd700; /* Zlatna boja na hover */
   }
   
-.event-info {
-    display: flex;
-    justify-content: space-between; /* Razdvaja predavača i dvoranu */
-    align-items: center; /* Poravnava ih vertikalno u sredini */
-}
+
 
 .speaker {
     margin-right: 20px; /* Dodaj razmak između predavača i dvorane ako želiš */
 }
 
 .location {
-    text-align: left; /* Poravnaj dvoranu desno */
+    text-align: right; /* Poravnaj dvoranu desno */
 }
 
 .radno-predsjednistvo {
@@ -244,4 +244,15 @@ body {
 
 .radno-predsjednistvo .speaker {
     margin: 0; /* Ukloni default margin p elementa */
+}
+
+
+.speaker-names {
+    white-space: pre-line; /* Očuva enter u tekstu i omogućava prijelom reda */
+    line-height: 1.2; /* Smanjuje razmak između redova */
+}
+.radno-predsjednistvo p {
+    white-space: pre-line; /* Očuva enter u tekstu i omogućava prijelom reda */
+    line-height: 0.7; /* Smanjuje razmak između redova */
+    margin: 0; /* Uklanja defaultni margin za <p> element */
 }
