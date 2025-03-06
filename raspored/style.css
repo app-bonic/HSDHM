@@ -31,7 +31,7 @@ body {
 }
 .schedule-header .active {
     font-weight: bold;
-    border-bottom: 2px solid #396782;
+    
 }
 .schedule-container {
     max-width: 500px;
@@ -52,7 +52,6 @@ body {
     padding: 10px;
     align-items: center;
     cursor: pointer;
-    border-bottom: 2px solid #396782;
     border-left: 2px solid #396782;
     
     margin-bottom: 5px; 
@@ -145,7 +144,7 @@ body {
 }
 .orange-event {
     border-left: 2px solid orange; /* Narančasta boja za OKRUGLI */
-    border-bottom: 2px solid orange;
+    
 }
 .red-event {
     border-left: 2px solid red; /* Crvena boja za PANEL */
@@ -171,7 +170,7 @@ body {
 }
 .workshop-event {
     border-left: 2px solid green;
-    border-bottom: 2px solid green;  /* Dodaj zelenu liniju za radionicu */
+      /* Dodaj zelenu liniju za radionicu */
     background-color: white; /* Lagana zelena pozadina */
 }
 .kava-event {
@@ -253,6 +252,12 @@ body {
 }
 .radno-predsjednistvo p {
     white-space: pre-line; /* Očuva enter u tekstu i omogućava prijelom reda */
-    line-height: 0.7; /* Smanjuje razmak između redova */
+    line-height: 1.2; /* Smanjuje razmak između redova */
     margin: 0; /* Uklanja defaultni margin za <p> element */
+}
+
+.schedule-header button.active {
+    border-bottom: 3px solid #2A9D8F; /* Zelena podertana linija */
+    color: #2A9D8F;
+    font-weight: bold;
 }

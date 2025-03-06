@@ -1,9 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
-    let danKongresa = 3; // Početna vrijednost dana
+    let danKongresa = 1; // Početna vrijednost dana
+    let danas = new Date();
+
+    if (danas.getFullYear() === 2025) {
+        if (danas.getMonth() === 2 && danas.getDate() === 14) { // Mjeseci su indeksirani od 0 (2 = ožujak)
+            danKongresa = 2;
+        } else if (danas.getMonth() === 2 && danas.getDate() === 15) {
+            danKongresa = 3;
+        }
+    }
+
+    updateActiveButton(danKongresa); // Dodajte ovu liniju
 
     // Funkcija za učitavanje datoteke na osnovu dana
     function loadSchedule(dan) {
-        const fileName = `${dan}.xlsx`;
+        // Dodaj base URL i cache-busting parametar
+        const baseUrl = "https://app-bonic.github.io/HSDHM/data/";
+        const fileName = `${baseUrl}${dan}.xlsx?t=${new Date().getTime()}`;
         
         fetch(fileName)
             .then(response => {
@@ -16,13 +29,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 const workbook = XLSX.read(data, { type: 'array' });
                 const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
                 const jsonData = XLSX.utils.sheet_to_json(firstSheet, { header: 1 });
-
-                displaySchedule(jsonData); // Prikaz rasporeda
+    
+                displaySchedule(jsonData);
             })
             .catch(error => {
                 console.error('There was a problem with the fetch operation:', error);
             });
-
+    
         // Ažuriraj aktivni gumb
         updateActiveButton(dan);
     }
@@ -31,13 +44,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateActiveButton(dan) {
         const buttons = document.querySelectorAll('.schedule-header button');
         buttons.forEach((button, index) => {
-            if (index + 1 === dan) {
-                button.classList.add('active');
-            } else {
-                button.classList.remove('active');
-            }
+            // Koristimo index +1 jer dani počinju od 1
+            button.classList.toggle('active', index + 1 === dan);
         });
     }
+    
 
     // Dodaj event listenere na svaki gumb
     const buttons = document.querySelectorAll('.schedule-header button');
