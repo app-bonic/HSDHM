@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponzors</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        .image-container {
+            margin: 10px;
+        }
+        .image-container img {
+            width: 80%;
+            max-width: 400px;
+            cursor: pointer;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .image-container img:hover {
+            transform: scale(1.05);
+            border-color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    
+
+    <div class="image-container">
+        <img src="slika.1.jpg" alt="Slika 1" onclick="downloadPDF()">
+    </div>
+    <div class="image-container">
+        <img src="slika.2.jpg" alt="Slika 2" onclick="downloadPDF()">
+    </div>
+    <div class="image-container">
+        <img src="slika.3.jpg" alt="Slika 3" onclick="downloadPDF()">
+    </div>
+    <div class="image-container">
+        <img src="slika.4.jpg" alt="Slika 4" onclick="downloadPDF()">
+    </div>
+
+    <script>
+        function downloadPDF() {
+            window.location.href = "Sponzori-8. KONGRES HITNE MEDICINE MEDICINSKIH SESTARA I MEDICINSKIH TEHNIČARA.pdf"; // Postavi pravi naziv PDF-a
+        }
+    </script>
+
+</body>
+</html>
